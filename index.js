@@ -17,8 +17,8 @@ con.connect((err) => {
 });
 
 // sending data to database
-const sql = 'INSERT INTO it ( username, email) VALUES (?, ?)';
-const values = ['abhijeet', 'abhijeet@gmail.com'];
+const sql = 'INSERT INTO users ( name, email,contact,address) VALUES (?, ?,?,?)';
+const values = ['gita', 'gita@gmail.com','111111111111',' up'];
 
 con.query(sql, values, (error, results) => {
   if (error) {
