@@ -17,8 +17,8 @@ con.connect((err) => {
 });
 
 // sending data to database
-const sql = 'INSERT INTO employees ( firstName, email,phoneno,address,hired date,job title,salary) VALUES (?, ?,?,?,?,?,?)';
-const values = ['neha', 'neha@gmail.com','9089575790',' Alpha 1','2023-01-02','software',"40000"];
+const sql = 'INSERT INTO employees ( firstName,lastName, email,phoneno,address,hired date,job title,salary,manager id) VALUES (?, ?,?,?,?,?,?,?,?)';
+const values = ['neha', 'kumari','neha@gmail.com','9089575790',' Alpha 1','2023-01-02','software',"40000",'123'];
 
 con.query(sql, values, (error, results) => {
   if (error) {
