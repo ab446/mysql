@@ -1,28 +1,13 @@
-const mysql = require('mysql');
+const fs = require('fs');
+const path = require('path');
+const dirpath = path.join(__dirname, 'files');
 
-// first connected to mysql database employee
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'employee'
-});
+// Directory check and creation
+if (!fs.existsSync(dirpath)) {
+    fs.mkdirSync(dirpath);
+}
 
-con.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.message);
-        return;
-    }
-    console.log('Connected to the database');
-});
-
-// sending data to database
-const sql = 'INSERT INTO users ( name, email,contact,address) VALUES (?, ?,?,?)';
-const values = ['gita', 'gita@gmail.com','111111111111',' up'];
-
-con.query(sql, values, (error, results) => {
-  if (error) {
-    return console.error('Error inserting data:', error);
-  }
-  console.log('Data inserted successfully:', results);
-});
+for (let i = 0; i < 5; i++) {
+  const filePath = path.join(dirpath, "hello" + i + ".txt");
+  fs.writeFileSync(filePath, "a simple txt file");
+}

@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-// first connected to mysql database employee
+// पहले mysql डेटाबेस 'employee' से कनेक्ट करें
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -16,13 +16,13 @@ con.connect((err) => {
     console.log('Connected to the database');
 });
 
-// sending data to database
-const sql = 'INSERT INTO employees ( firstName,lastName, email,phoneno,address,hired date,job title,salary,manager id) VALUES (?, ?,?,?,?,?,?,?,?)';
-const values = ['neha', 'kumari','neha@gmail.com','9089575790',' Alpha 1','2023-01-02','software',"40000",'123'];
+// sending the data into database
+const sql = 'INSERT INTO employees (EmployeeID,FirstName,LastName,Email,PhoneNumber,HireDate,JobTitle,Department,Salary,ManagerID) VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?, ?)';
+const values = ['4','sony', 'Kumari', 'sony@gmail.com', '9089575797','2020-01-17','Software Engineer','IT','60000','5'];
 
 con.query(sql, values, (error, results) => {
-  if (error) {
-    return console.error('Error inserting data:', error);
-  }
-  console.log('Data inserted successfully:', results);
+    if (error) {
+        return console.error('Error inserting data:', error);
+    }
+    console.log('Data inserted successfully:', results);
 });
